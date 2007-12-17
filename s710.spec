@@ -12,7 +12,6 @@ URL:		http://daveb.net/s710/
 Source0: 	http://daveb.net/s710/src/%{name}-%{version}.tar.bz2
 License: 	GPL
 Group: 		Toys
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	libusb-devel gd-devel
 
 %description 
