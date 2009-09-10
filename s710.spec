@@ -1,6 +1,6 @@
 %define name s710
 %define version 0.19
-%define release %mkrel 5
+%define release %mkrel 6
 %define libmajor 5
 %define libname %mklibname %{name}_ %{libmajor}
 
