@@ -64,12 +64,17 @@ library.
 %setup -q
 
 %build
+autoreconf -fi
 %configure --with-usb
-%make
+%make LIBS="-lgd -lusb"
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
+# weird docs dir
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/
+mv %{buildroot}/%{_defaultdocdir}/%{name}-%{version}/* %{buildroot}/%{_defaultdocdir}/%{name}/
 
 %clean
 rm -rf %{buildroot}
@@ -85,6 +90,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc COPYING INSTALL NEWS
+%doc %{_defaultdocdir}/%{name}/README*
 %{_bindir}/s710d
 %{_bindir}/s710sh
 %{_bindir}/srdcat
