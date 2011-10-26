@@ -14,6 +14,7 @@ Group: 		Toys
 
 BuildRequires:	libusb-devel
 BuildRequires:	gd-devel
+BuildRequires:	libpng-devel
 
 %description 
 This software lets you communicate from a Linux computer to a Polar S710 heart
