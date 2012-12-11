@@ -67,31 +67,18 @@ library.
 %build
 autoreconf -fi
 %configure --with-usb
-%make LIBS="-lgd -lusb"
+%make LIBS="-lgd -lusb -lm"
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # weird docs dir
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/
 mv %{buildroot}/%{_defaultdocdir}/%{name}-%{version}/* %{buildroot}/%{_defaultdocdir}/%{name}/
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
 %files
 %defattr(-,root,root)
-%doc COPYING INSTALL NEWS
-%doc %{_defaultdocdir}/%{name}/README*
+%doc %{_defaultdocdir}/%{name}/*
 %{_bindir}/s710d
 %{_bindir}/s710sh
 %{_bindir}/srdcat
@@ -106,8 +93,39 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %{_includedir}/%{name}.h
 %{_libdir}/*%{name}.so
-%{_libdir}/*%{name}.la
 
 %files -n %{staticname}
 %{_libdir}/*%{name}.a
 
+
+
+%changelog
+* Wed Oct 26 2011 Matthew Dawkins <mattydaw@mandriva.org> 0.21-2
++ Revision: 707388
+- added missing BR
+- fix build and file list
+- new version s710
+  drop major from devel and static pkgs
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+    - import s710
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+
+* Wed Sep 06 2006 Buchan Milne <bgmilne@mandriva.org> 0.19-3mdv2007.0
+- Rebuild
+
+* Fri Jan 27 2006 Buchan Milne <bgmilne@mandriva.org> 0.19-2mdk
+- buildrequires
+
+* Thu Jan 26 2006 Buchan Milne <bgmilne@mandriva.org> 0.19-1mdk
+- Initial package
