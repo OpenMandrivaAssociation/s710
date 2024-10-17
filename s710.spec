@@ -7,7 +7,7 @@ Summary: 	Software for interfacing with Polar Heart Rate Monitors
 Name: 		s710
 Version: 	0.21
 Release: 	3
-URL:		http://daveb.net/s710/
+URL:		https://daveb.net/s710/
 Source0: 	http://s710.googlecode.com/files/%{name}-%{version}.tar.gz
 License: 	GPL
 Group: 		Toys
