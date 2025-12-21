@@ -12,6 +12,11 @@ Source0: 	http://s710.googlecode.com/files/%{name}-%{version}.tar.gz
 License: 	GPL
 Group: 		Toys
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libusb-devel
 BuildRequires:	gd-devel
 BuildRequires:	libpng-devel
